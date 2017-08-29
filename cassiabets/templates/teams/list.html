@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="docs-section">
+  <div class="row">
+    <div class="ten columns">
+      <h6 class="docs-header">Times</h6>
+    </div>
+    <div class="two columns">
+      <a class="button" href="{% url 'bets:team-create' %}"> Novo Time </a>
+    </div>
+  </div>
+  <table class="u-full-width">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Pontuação</th>
+      <th> - </th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for obj in object_list %}
+    <tr>
+      <td>{{ obj.name }}</td>
+      <td>{{ obj.points }}</td>
+      <td><a href="{% url 'bets:team-details' obj.pk %}"> - </a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

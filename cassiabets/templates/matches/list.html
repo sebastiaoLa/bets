@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="docs-section"><div class="ten columns">
+    <h6 class="docs-header">Partidas</h6>
+  </div>
+  <div class="two columns">
+    <a class="button" href="{% url 'bets:match-create' %}"> Nova Partida </a>
+  </div>
+  <table class="u-full-width">
+  <thead>
+    <tr>
+      <th>Time #1</th>
+      <th>Time #2</th>
+      <th>Resultado</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for obj in object_list %}
+    <tr>
+      <td>{{ obj.team_1 }}</td>
+      <td>{{ obj.team_2 }}</td>
+      {% if obj.tie %}
+      <td>Empate</td>
+      {% elif obj.winner %}
+      <td>{{ obj.winner }}</td>
+      {% else %}
+      <td>-</td>
+      {% endif %}
+      <td><a class="button" href="{% url 'bets:matches-details' obj.pk %}">Detalhes</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

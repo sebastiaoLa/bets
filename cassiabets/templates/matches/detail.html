@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="docs-section">
+  <h6 class="docs-header">Partida . {{ object.time_1.name }} vs. {{ object.time_2.name}}</h6>
+  {% if object.tie %}
+    <p>A partida terminou em empate</p>
+  {% elif object.winner %}
+    <p> O vencedor foi {{ object.winner.name }}</p>
+  {% else %}
+    <p> A partida ainda ira ocorrer no dia {{ object.data }}</p>
+  {% endif %}
+</div>
+{% endblock %}
